@@ -3,11 +3,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => const MyApp(), // Wrap your app
-    ),
-);
+      DevicePreview(
+        enabled: !kReleaseMode,
+        builder: (context) => const MyApp(), // Wrap your app
+      ),
+    );
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -19,9 +19,7 @@ class MyApp extends StatelessWidget {
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       title: 'Flutter demo',
-      theme: ThemeData(
-          primaryColor: Colors.lightBlue[800]
-      ),
+      theme: ThemeData(primaryColor: Colors.lightBlue[800]),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -32,24 +30,25 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter33'),
-        leading: IconButton(
-          icon: const Icon(Icons.menu), onPressed: () {  },
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search), onPressed: () {  },
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Flutter'),
+          leading: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {},
           ),
-          IconButton(
-            icon: const Icon(Icons.more_vert), onPressed: () {  },
-          ),
-        ],
-        flexibleSpace: Icon(
-          Icons.photo_camera,
-          size: 75.0,
-          color: Colors.pink[900],
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: const Icon(Icons.more_vert),
+              onPressed: () {},
+            ),
+          ],
+          flexibleSpace: Image.asset("assests/images.jpg", fit: BoxFit.cover,),
         ),
       ),
     );
