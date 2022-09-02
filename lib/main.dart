@@ -15,6 +15,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
+      debugShowCheckedModeBanner: false,  //use for remove banner of debug on appbar
       useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
@@ -30,27 +32,80 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return DefaultTabController(
+      length: 3,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter'),
-          leading: IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {},
-          ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.search),
+          appBar: AppBar(
+            title: const Text('Flutter'),
+            leading: IconButton(
+              icon: const Icon(Icons.menu),
               onPressed: () {},
             ),
-            IconButton(
-              icon: const Icon(Icons.more_vert),
-              onPressed: () {},
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.search),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: const Icon(Icons.more_vert),
+                onPressed: () {},
+              ),
+            ],
+
+            //use for add images to background, before add image, edit puspac,yaml
+            // flexibleSpace: Image.asset(
+            //   "assests/images.jpg",
+            //   fit: BoxFit.cover,
+            // ),
+
+            bottom:  const TabBar(
+              tabs: [
+                Tab(
+                  icon: Icon(Icons.directions_car),
+                  text: 'Car',
+                ),
+                Tab(
+                    icon: Icon(Icons.directions_transit),
+                    text: 'Train',
+                ),
+                Tab(
+                    icon: Icon(Icons.directions_bike),
+                    text: 'Bike',
+                ),
+              ],
+            ),
+            //shadow of Appabar
+            elevation: 8.0,
+            backgroundColor: Colors.pinkAccent,
+          ),
+        body:  const TabBarView(
+          children: [
+            // tab1(),
+            Icon(
+              Icons.directions_car,
+              size: 60.0,
+            ),
+             Icon(
+              Icons.directions_transit,
+              size: 60.0,
+            ),
+             Icon(
+              Icons.directions_bike,
+              size: 60.0,
             ),
           ],
-          flexibleSpace: Image.asset("assests/images.jpg", fit: BoxFit.cover,),
         ),
-      ),
+
+        ),
     );
+
   }
 }
+
+// Widget tab1(){
+//   return  Container(
+//     child: const Center(
+//       child: Text('From tab1 widget'),
+//     ),
+//   );
+// }
