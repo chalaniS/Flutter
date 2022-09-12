@@ -11,26 +11,33 @@ class NetworkRequest extends StatefulWidget {
 
 class _NetworkRequestState extends State<NetworkRequest> {
   //simulate network NetworkRequest
-  Future<void> getData() async {
+  Future<String> getData() async {
     //simulate network request to get user email
     String email = await Future.delayed(const Duration(seconds: 3), () {
       // ignore: avoid_print
       return 'chalani@gmail.com';
     });
 
-    await Future.delayed(const Duration(seconds: 2), () {
-      // ignore: avoid_print
-      print('name: chalani , age : 21');
-    });
+    // await Future.delayed(const Duration(seconds: 2), () {
+    //   // ignore: avoid_print
+    //   print('name: chalani , age : 21');
+    // });
 
+    // ignore: avoid_print, prefer_interpolation_to_compose_strings
+    // print(email + '\nother codes');
+    return email;
+  }
+
+  Future<void> getNetworkRequest() async {
     // ignore: avoid_print
-    print(email + '\nother codes');
+    print(await getData());
   }
 
   @override
   void initState() {
     super.initState();
-    getData();
+    getNetworkRequest();
+    // ignore: avoid_print
     print('Another lines runs without waiting');
   }
 

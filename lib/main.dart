@@ -1,4 +1,5 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:first/exStreamBuilder.dart';
 import 'package:first/networkRequest.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       title: 'Flutter demo',
       theme: ThemeData(primaryColor: Colors.lightBlue[800]),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const ExampleStream(),
     );
   }
 }
